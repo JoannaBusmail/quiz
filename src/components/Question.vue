@@ -20,8 +20,9 @@
             <div class="option-value">
                 <p>{{ option.text }}</p>
             </div>
-        </div>
 
+        </div>
+        <p>Click in the option or press the corresponding keyboard letter</p>
     </div>
 </template>
 
@@ -40,6 +41,7 @@ const emit = defineEmits([ 'selectOption' ])
 
 const emitSelectedOption = (isCorrect) =>
 { emit("selectOption", isCorrect) }
+
 
 
 </script>
@@ -61,13 +63,15 @@ const emitSelectedOption = (isCorrect) =>
 }
 
 .option-label {
-    background-color: bisque;
+    background-color: rgb(196, 200, 255);
     width: 50px;
     height: 50px;
+    border-radius: 100%;
     font-size: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 10px;
 
 }
 
@@ -77,6 +81,7 @@ const emitSelectedOption = (isCorrect) =>
     height: 50px;
     font-size: 30px;
     padding: 0 20px;
+    border-radius: 10px;
 }
 </style>
 ```

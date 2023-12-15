@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import Question from '../components/Question.vue'
 import QuizHeader from '../components/QuizHeader.vue'
 import Results from '../components/Result.vue'
@@ -99,6 +99,32 @@ const onOptionSelected = (isCorrect) =>
     }
 
     currentQuestionIndex.value++
+}
+
+
+// ADD KEYBOARD SUPPORT
+onMounted(() =>
+{
+    window.addEventListener('keydown', handleKeyPress)
+})
+
+// Remove event listener when the component is unmounted
+onUnmounted(() =>
+{
+    window.removeEventListener('keydown', handleKeyPress)
+})
+
+// Handle key press event
+const handleKeyPress = (event) =>
+{
+    const key = event.key.toUpperCase() // Convert to uppercase to handle both cases
+    if ([ 'A', 'B', 'C', 'D' ].includes(key)) {
+        // If the pressed key is one of the option labels, select the option
+        const selectedOption = quiz.questions[ currentQuestionIndex.value ].options.find(option => option.label === key)
+        if (selectedOption) {
+            onOptionSelected(selectedOption.isCorrect)
+        }
+    }
 }
 </script>
 

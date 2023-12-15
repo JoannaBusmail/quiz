@@ -30,13 +30,15 @@ header h4 {
 }
 
 .bar {
-    width: 300px;
-    height: 20px;
-    border: 3px solid bisque;
+    width: 100%;
+    height: 15px;
+    border: 3px solid rgb(118, 250, 118);
+    border-radius: 10px;
 }
 
 .completion {
     height: 100%;
-    background-color: bisque;
+    background-color: rgb(118, 250, 118);
+
 }
 </style>
